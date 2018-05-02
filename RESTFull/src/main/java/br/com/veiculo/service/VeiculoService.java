@@ -4,7 +4,7 @@ import javax.ws.rs.core.MediaType;
 
 import com.sun.research.ws.wadl.Response;
 
-import br.com.veiculo.validador.CampoObrigatorioException;
+import br.com.veiculo.validador.GenericException;
 import br.com.veiculo.validador.Validator;
 
 import java.util.ArrayList;
@@ -54,7 +54,9 @@ public class VeiculoService {
 	  @DELETE
 	  @Produces(MediaType.APPLICATION_JSON)
 	  public Response deleteVeiculo(@PathParam("id") long id) {
-		return null;
+		  System.out.println("OK");
+		  //DELETE DAO
+		  return null;
 	  }
 	  
 	  @Path("/updateVeiculo")
@@ -63,14 +65,16 @@ public class VeiculoService {
 	  @PUT
 	  public Response updateVeiculo(Veiculo veiculo) {
 		  try {
-		        if (Validator.validaCamposObrigatorios(veiculo)) {
+		        if (Validator.validar(veiculo)) {
 		            
 		        }
-		    } catch (CampoObrigatorioException | IllegalAccessException | IllegalArgumentException e) {
+		    } catch (GenericException | IllegalAccessException | IllegalArgumentException | ClassNotFoundException | NoSuchFieldException e) {
 		     
 		        e.printStackTrace();
 		    }
-		return null;
+		  System.out.println("OK");
+		//MERGE DAO
+		  return null;
 	  }
 	  
 	  @Path("/addVeiculo")
@@ -78,8 +82,17 @@ public class VeiculoService {
 	  @Produces(MediaType.APPLICATION_JSON)
 	  @POST
 	  public Response addVeiculo(Veiculo veiculo) {
+		  try {
+		        if (Validator.validar(veiculo)) {
+		            
+		        }
+		    } catch (GenericException | IllegalAccessException | IllegalArgumentException | ClassNotFoundException | NoSuchFieldException e) {
+		     
+		        e.printStackTrace();
+		    }
 		  System.out.println("OK");
-		return null;
+		//PERSIST DAO
+		  return null;
 	  }
 
 }

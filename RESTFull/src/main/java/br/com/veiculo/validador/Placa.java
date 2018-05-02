@@ -1,5 +1,12 @@
 package br.com.veiculo.validador;
 
-public @interface Placa {
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
+@Retention(RetentionPolicy.RUNTIME)
+@Target(ElementType.FIELD)
+public @interface Placa {
+	public boolean value() default true;
 }
