@@ -4,6 +4,9 @@ import javax.ws.rs.core.MediaType;
 
 import com.sun.research.ws.wadl.Response;
 
+import br.com.veiculo.validador.CampoObrigatorioException;
+import br.com.veiculo.validador.Validator;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,7 +27,7 @@ public class VeiculoService {
 	  @Produces(MediaType.APPLICATION_JSON)
 	  public Veiculo getVeiculoById(@PathParam("id") long id) {
 
-		Veiculo v = new Veiculo(23l, "ABC123", "modelaooo", 1998, "azul", true);
+		Veiculo v = new Veiculo(23l, "CVF8765", "modelaooo", 1998, "azul", true);
 
 		return v;
 	  }
@@ -35,10 +38,14 @@ public class VeiculoService {
 	  public List<Veiculo> getVeiculos() {
 		  
 		  List<Veiculo> vs = new ArrayList<Veiculo>();
-		  vs.add(new Veiculo(23l, "ABC123", "modelaooo", 1998, "azul", true));
-		  vs.add(new Veiculo(23l, "ABC123", "modelaooo", 1998, "azul", true));
-		  vs.add(new Veiculo(23l, "ABC123", "modelaooo", 1998, "azul", true));
-		  vs.add(new Veiculo(23l, "ABC123", "modelaooo", 1998, "azul", true));
+		  vs.add(new Veiculo(23l, "ABC1234", "modelaooo1", 1998, "azul", true));
+		  vs.add(new Veiculo(23l, "ASD1253", "modelaooo2", 1998, "branco", false));
+		  vs.add(new Veiculo(23l, "WSA3455", "modelaooo2", 1998, "amarelo", true));
+		  vs.add(new Veiculo(23l, "CVF8765", "modelaooo3", 1998, "preto", false));
+		  vs.add(new Veiculo(23l, "CFG1235", "modelaooo4", 1998, "rosa", true));
+		  vs.add(new Veiculo(23l, "OLA7895", "modelaooo5", 1998, "marom", false));
+		  vs.add(new Veiculo(23l, "FOD1565", "modelaooo6", 1998, "roxo", true));
+		  vs.add(new Veiculo(23l, "NET2135", "modelaooo6", 1998, "azul", false));
 		  
 		  return vs;
 	  }
@@ -47,7 +54,6 @@ public class VeiculoService {
 	  @DELETE
 	  @Produces(MediaType.APPLICATION_JSON)
 	  public Response deleteVeiculo(@PathParam("id") long id) {
-		  System.out.println("OK");
 		return null;
 	  }
 	  
@@ -56,7 +62,14 @@ public class VeiculoService {
 	  @Produces(MediaType.APPLICATION_JSON)
 	  @PUT
 	  public Response updateVeiculo(Veiculo veiculo) {
-		  System.out.println("OK");
+		  try {
+		        if (Validator.validaCamposObrigatorios(veiculo)) {
+		            
+		        }
+		    } catch (CampoObrigatorioException | IllegalAccessException | IllegalArgumentException e) {
+		     
+		        e.printStackTrace();
+		    }
 		return null;
 	  }
 	  

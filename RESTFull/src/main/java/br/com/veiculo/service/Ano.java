@@ -1,5 +1,5 @@
 package br.com.veiculo.service;
 
-public class ValidadoresService {
+public @interface Ano {
 
 }
