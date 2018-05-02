@@ -1,5 +1,6 @@
 package br.com.veiculo.service;
 
+import br.com.veiculo.validador.Ano;
 import br.com.veiculo.validador.Obrigatorio;
 import br.com.veiculo.validador.Placa;
 
