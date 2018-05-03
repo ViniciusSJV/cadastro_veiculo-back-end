@@ -26,18 +26,22 @@ public class VeiculoService {
 	  @GET
 	  @Produces(MediaType.APPLICATION_JSON)
 	  public Veiculo getVeiculoById(@PathParam("id") long id) {
-
-		Veiculo v = new Veiculo(23l, "CVF8765", "modelaooo", 1998, "azul", true);
-
-		return v;
+		return criarObjFake();
 	  }
+
+	private Veiculo criarObjFake() {
+		return new Veiculo(23l, "CVF8765", "modelaooo", 1998, "azul", true);
+	}
 	  
 	  @Path("/getVeiculos")
 	  @GET
 	  @Produces(MediaType.APPLICATION_JSON)
 	  public List<Veiculo> getVeiculos() {
-		  
-		  List<Veiculo> vs = new ArrayList<Veiculo>();
+		  return montarListaFake();
+	  }
+
+	private List<Veiculo> montarListaFake() {
+		List<Veiculo> vs = new ArrayList<Veiculo>();
 		  vs.add(new Veiculo(23l, "ABC1234", "modelaooo1", 1998, "azul", true));
 		  vs.add(new Veiculo(23l, "ASD1253", "modelaooo2", 1998, "branco", false));
 		  vs.add(new Veiculo(23l, "WSA3455", "modelaooo2", 1998, "amarelo", true));
@@ -48,13 +52,12 @@ public class VeiculoService {
 		  vs.add(new Veiculo(23l, "NET2135", "modelaooo6", 1998, "azul", false));
 		  
 		  return vs;
-	  }
+	}
 	  
 	  @Path("/deleteVeiculo/{id}")
 	  @DELETE
 	  @Produces(MediaType.APPLICATION_JSON)
 	  public Response deleteVeiculo(@PathParam("id") long id) {
-		  System.out.println("OK");
 		  //DELETE DAO
 		  return null;
 	  }
@@ -66,14 +69,12 @@ public class VeiculoService {
 	  public Response updateVeiculo(Veiculo veiculo) {
 		  try {
 		        if (Validator.validar(veiculo)) {
-		            
+		            //update DAO
 		        }
 		    } catch (GenericException | IllegalAccessException | IllegalArgumentException | ClassNotFoundException | NoSuchFieldException e) {
 		     
 		        e.printStackTrace();
 		    }
-		  System.out.println("OK");
-		//MERGE DAO
 		  return null;
 	  }
 	  
@@ -84,14 +85,12 @@ public class VeiculoService {
 	  public Response addVeiculo(Veiculo veiculo) {
 		  try {
 		        if (Validator.validar(veiculo)) {
-		            
+		    		//PERSIST DAO
 		        }
 		    } catch (GenericException | IllegalAccessException | IllegalArgumentException | ClassNotFoundException | NoSuchFieldException e) {
 		     
 		        e.printStackTrace();
 		    }
-		  System.out.println("OK");
-		//PERSIST DAO
 		  return null;
 	  }
 
