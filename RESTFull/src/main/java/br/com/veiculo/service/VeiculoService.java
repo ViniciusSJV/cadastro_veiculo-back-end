@@ -68,6 +68,7 @@ public class VeiculoService {
 	  @PUT
 	  public Response updateVeiculo(Veiculo veiculo) {
 		  try {
+			  	// se os campos foram validos 
 		        if (Validator.validar(veiculo)) {
 		            //update DAO
 		        }
@@ -84,6 +85,7 @@ public class VeiculoService {
 	  @POST
 	  public Response addVeiculo(Veiculo veiculo) {
 		  try {
+			// se os campos foram validos 
 		        if (Validator.validar(veiculo)) {
 		    		//PERSIST DAO
 		        }

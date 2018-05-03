@@ -1,19 +1,15 @@
 package br.com.veiculo.service;
 
-import br.com.veiculo.validador.Ano;
 import br.com.veiculo.validador.Obrigatorio;
-import br.com.veiculo.validador.Placa;
 
 public class Veiculo {
 	
 	private Long id;
 	@Obrigatorio
-	@Placa
 	private String placa;
 	@Obrigatorio
 	private String modelo;
 	@Obrigatorio
-	@Ano
 	private Integer ano;
 	@Obrigatorio
 	private String cor;
